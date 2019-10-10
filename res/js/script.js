@@ -29,6 +29,17 @@ $(function () {
         $("#courses-button").attr("class","pill active");
     });
 
+    function addCourse(course) {
+        let courses_table = $("#courses tbody");
+        let tr_course = $("<tr></tr>");
+        let td_id = $("<td></td>").text(courses_table.children().length + 1);
+        let td_title = $("<td></td>").text(course.title);
+        let td_semester = $("<td></td>").text(course.semester);
+        let td_grade = $("<td></td>").text(course.grade);
+        tr_course.append(td_id,td_title,td_semester,td_grade);
+        courses_table.append(tr_course);
+    }
+
     //Initialization function
     function init() {
         //Setting up the user information dynamically [I don't really know how far we have to do it dynamically, so I did it a medium amount] (excluding gpa)
@@ -47,14 +58,8 @@ $(function () {
         $("#profile .avatar").after(div_info,div_gpa); //Adding the created html after the avatar class in profile
 
         //Setting up the course information table dynamically
-        for (let i = 1; i <= courses.length; i++) {
-            let tr_course = $("<tr></tr>");
-            let td_id = $("<td></td>").text(i);
-            let td_title = $("<td></td>").text(courses[i-1].title);
-            let td_semester = $("<td></td>").text(courses[i-1].semester);
-            let td_grade = $("<td></td>").text(courses[i-1].grade);
-            tr_course.append(td_id,td_title,td_semester,td_grade);
-            $("#courses").append(tr_course);
+        for (let i = 0; i < courses.length; i++) {
+            addCourse(courses[i])
         }
-        }
+    }
 });
