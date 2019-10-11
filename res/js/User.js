@@ -4,6 +4,6 @@ class User{
         this.lastname = lastname;
         this.birthdate = birthdate;
         this.faculty = faculty;
-        this.gpa = 2.75;
+        this.gpa = 0;
     }
 }

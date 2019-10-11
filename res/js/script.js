@@ -29,6 +29,44 @@ $(function () {
         $("#courses-button").attr("class","pill active");
     });
 
+    $("#save-course").click(function () {
+        let title = $("#title").val();
+        let semester = $("#semester").val();
+        let grade = $("#grade").val();
+
+        if (title !== "" && semester !== "" && grade !== "") {
+            let course = new Course(title, parseInt(semester), parseInt(grade));
+            addCourse(course);
+            courses.push(course);
+        }
+
+        refreshGPA();
+    })
+
+    function calculateGPA() {
+        let points = 0;
+        
+        for (let i = 0; i < courses.length; i++) {
+            if (courses[i].grade > 90)
+                points += 4;
+            else if (courses[i].grade > 80)
+                points += 3;
+            else if (courses[i].grade > 70)
+                points += 2;
+            else if (courses[i].grade > 60)
+                points += 1;
+            else if (courses[i].grade > 50)
+                points += 0.5;
+        }
+        
+        return points / courses.length;
+    }
+
+    function refreshGPA() {
+        $("#gpa strong").text(calculateGPA())
+    }
+
+
     function addCourse(course) {
         let courses_table = $("#courses tbody");
         let tr_course = $("<tr></tr>");
@@ -53,7 +91,7 @@ $(function () {
 
         //Setting up the gpa dynamically(user gpa should probably be calculated before this)
         let div_gpa = $("<div></div>").attr("id","gpa");
-        let strong_gpa = $("<strong></strong>").text(user.gpa);
+        let strong_gpa = $("<strong></strong>").text(calculateGPA());
         div_gpa.append(strong_gpa);
         $("#profile .avatar").after(div_info,div_gpa); //Adding the created html after the avatar class in profile
 
