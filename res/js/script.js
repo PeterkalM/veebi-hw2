@@ -45,7 +45,7 @@ $(function () {
         let semester = $("#semester").val();
         let grade = $("#grade").val();
 
-        if (title !== "" && semester !== "" && grade !== "") {
+        if (title !== "" && semester !== "" && grade !== "" && semester >= 1 && grade >= 0) {
             let course = new Course(title, parseInt(semester), parseInt(grade));
             addCourse(course);
             courses.push(course);
@@ -77,7 +77,7 @@ $(function () {
     }
 
     function refreshGPA() {
-        $("#gpa strong").text(calculateGPA())
+        $("#gpa strong").text(Math.round(calculateGPA()*1000)/1000)
     }
 
 
