@@ -51,8 +51,12 @@ $(function () {
             courses.push(course);
         }
 
+        $("#title").val('');
+        $("#semester").val('');
+        $("#grade").val('');
+        $("#add-course").toggle();
         refreshGPA();
-    })
+    });
 
     function calculateGPA() {
         let points = 0;
