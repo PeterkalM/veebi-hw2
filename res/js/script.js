@@ -33,6 +33,13 @@ $(function () {
         $("#add-course").toggle();
     });
 
+    $("#cancel-course").click(function () {
+        $("#title").val('');
+        $("#semester").val('');
+        $("#grade").val('');
+        $("#add-course").toggle();
+    });
+
     $("#save-course").click(function () {
         let title = $("#title").val();
         let semester = $("#semester").val();
