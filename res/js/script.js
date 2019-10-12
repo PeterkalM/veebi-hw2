@@ -49,12 +49,11 @@ $(function () {
             let course = new Course(title, parseInt(semester), parseInt(grade));
             addCourse(course);
             courses.push(course);
+            $("#title").val('');
+            $("#semester").val('');
+            $("#grade").val('');
+            $("#add-course").toggle();
         }
-
-        $("#title").val('');
-        $("#semester").val('');
-        $("#grade").val('');
-        $("#add-course").toggle();
         refreshGPA();
     });
 
