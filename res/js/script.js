@@ -29,6 +29,10 @@ $(function () {
         $("#courses-button").attr("class","pill active");
     });
 
+    $("#add-course-button").click(function () {
+        $("#add-course").toggle();
+    });
+
     $("#save-course").click(function () {
         let title = $("#title").val();
         let semester = $("#semester").val();
