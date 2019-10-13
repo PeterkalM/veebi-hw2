@@ -45,7 +45,8 @@ $(function () {
         let semester = $("#semester").val();
         let grade = $("#grade").val();
 
-        if (title !== "" && semester !== "" && grade !== "" && semester >= 1 && grade >= 0) {
+        if (title !== "" && semester !== "" && grade !== "" && semester >= 1 && grade >= 0
+        && grade <= 100 && semester <= 8) {
             let course = new Course(title, parseInt(semester), parseInt(grade));
             addCourse(course);
             courses.push(course);
